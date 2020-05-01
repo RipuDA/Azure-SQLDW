@@ -1,0 +1,13 @@
+--# Database Catalog View
+
+select db.name
+,db.database_id
+,sp.name
+,db.create_date
+,db.collation_name
+,db.is_read_only
+,db.recovery_model_desc
+FROM sys.databases AS db
+JOIN sys.database_prinicipals AS sp
+	ON db.owner_sid = sp.[sid]
+ORDER BY db.database_id;
